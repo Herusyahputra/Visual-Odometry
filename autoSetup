@@ -1,0 +1,12 @@
+sudo apt install python3.8
+sudo apt install python3-pip
+
+git clone https://github.com/Herusyahputra/Visual-Odometry.git
+cd Visual-Odometry
+
+sudo apt install virtualenv
+virtualenv env
+source env/bin/activate
+
+pip3 install -r requirements.txt
+python3 main_vo.py
