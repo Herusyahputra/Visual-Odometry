@@ -49,18 +49,20 @@
      
 4. **How to use this apps**
 
-   Follow these steps to installation apication: 
+   Follow these steps to installation apication:
+     - Please Download [datasets](https://mcut-my.sharepoint.com/:f:/g/personal/m09158023_o365_mcut_edu_tw/Epup_-IDnudBgm_EUjRumkEB5K4iHOlKZRkjatFcv3fKIg?e=DxOsdE), put the video file that is in the Visual-Odometry/src/datasets folder                                                                            
      - Open your terminal by clicking Ctrl + Alt + T 
+     
    Step 1:
      - Type the command for a permissions
      ```
       $ git clone https://github.com/Herusyahputra/Visual-Odometry.git
      ``` 
      ```
-      $ cd Visual-Odometry
+      $ cd Visual-Odometry/src
      ```
      ```
-      $ cd src/python3 main_vo.py
+      $ python3 main_vo.py
      ``` 
    
    Steps 2:
@@ -72,8 +74,7 @@
      ```
       $ ./autoSetUp
      ```
-   Note: If you find the problem can't open the video, please Download [datasets](https://mcut-my.sharepoint.com/:f:/g/personal/m09158023_o365_mcut_edu_tw/Epup_-IDnudBgm_EUjRumkEB5K4iHOlKZRkjatFcv3fKIg?e=DxOsdE), replace the video file that is in the Visual-Odometry/src/datasets folder
-      
+
 5. **Referencess**                                                                                                         
     [1]. CamOdoCal: Automatic intrinsic and extrinsic calibration of a rig with multiple generic cameras and odometry, Link: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6696592                                                                                         
     [2]. Research Monocolar Visual Odometry Based on 3D-2D Motion Estimation, Link: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=7904314         
