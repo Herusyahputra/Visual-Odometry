@@ -49,8 +49,21 @@
      
 4. **How to use this apps**
 
-   Follow these steps to installation apication:
+   Follow these steps to installation apication: 
      - Open your terminal by clicking Ctrl + Alt + T 
+   Step 1:
+     - Type the command for a permissions
+     ```
+      $ git clone https://github.com/Herusyahputra/Visual-Odometry.git
+     ``` 
+     ```
+      $ cd Visual-Odometry
+     ```
+     ```
+      $ cd src/python3 main_vo.py
+     ``` 
+   
+   Steps 2:
      - Type the command for a permissions
      ```
       $ chmod +x autoSetUp
