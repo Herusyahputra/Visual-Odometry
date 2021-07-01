@@ -58,6 +58,8 @@
      - Type the command for installation application
      ```
       $ ./autoSetUp
+     ```
+   Note: If you find the problem can't open the video, please Download [datasets](https://mcut-my.sharepoint.com/:f:/g/personal/m09158023_o365_mcut_edu_tw/Epup_-IDnudBgm_EUjRumkEB5K4iHOlKZRkjatFcv3fKIg?e=DxOsdE), replace the video file that is in the Visual-Odometry/src/datasets folder
       
 5. **Referencess**                                                                                                         
     [1]. CamOdoCal: Automatic intrinsic and extrinsic calibration of a rig with multiple generic cameras and odometry, Link: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6696592                                                                                         
