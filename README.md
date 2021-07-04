@@ -57,9 +57,18 @@
      - Type the command for a permissions
      ```
       $ git clone https://github.com/Herusyahputra/Visual-Odometry.git
-     ``` 
      ```
-      $ cd Visual-Odometry/src
+     ```
+      $ cd Visual-Odometry
+     ```
+     ```
+      $ virtualenv env
+     ```
+     ```
+      $ source env/bin/activate
+     ```
+     ```
+      $ cd src
      ```
      ```
       $ python3 main_vo.py
