@@ -50,14 +50,12 @@
 4. **How to use this apps**
 
    Follow these steps to installation apication:
-     - Please Download [datasets](https://mcut-my.sharepoint.com/:f:/g/personal/m09158023_o365_mcut_edu_tw/Epup_-IDnudBgm_EUjRumkEB5K4iHOlKZRkjatFcv3fKIg?e=DxOsdE), put the video file that is in the Visual-Odometry/src/datasets folder                                                                            
+                                                                              
      - Open your terminal by clicking Ctrl + Alt + T 
-     
-   Step :
-     - Type the command for a permissions
      ```
       $ git clone https://github.com/Herusyahputra/Visual-Odometry.git
      ```
+     - Please Download [datasets](https://mcut-my.sharepoint.com/:f:/g/personal/m09158023_o365_mcut_edu_tw/Epup_-IDnudBgm_EUjRumkEB5K4iHOlKZRkjatFcv3fKIg?e=DxOsdE), put the video file that is in the Visual-Odometry/src/datasets folder   
      ```
       $ cd Visual-Odometry
      ```
