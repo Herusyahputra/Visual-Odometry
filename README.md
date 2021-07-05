@@ -68,6 +68,9 @@
       $ source env/bin/activate
      ```
      ```
+      $ ./install_basic.sh
+     ```
+     ```
       $ cd src
      ```
      ```
