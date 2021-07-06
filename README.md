@@ -66,6 +66,9 @@
       $ source env/bin/activate
      ```
      ```
+      $ chmod 777 *
+     ```
+     ```
       $ ./install_basic.sh
      ```
      ```
