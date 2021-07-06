@@ -77,6 +77,7 @@
      ```
       $ python3 main_vo.py
      ``` 
+    https://user-images.githubusercontent.com/60929939/124525654-97b6c200-de32-11eb-806e-6e3b0cee0a30.mp4
 
 5. **Referencess**                                                                                                         
     [1]. CamOdoCal: Automatic intrinsic and extrinsic calibration of a rig with multiple generic cameras and odometry, Link: https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=6696592                                                                                         
