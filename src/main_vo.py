@@ -83,6 +83,14 @@ if __name__ == "__main__":
                     cv2.circle(traj_img, (draw_x, draw_y), 1,(img_id*255/4540, 255-img_id*255/4540, 0), 1)   # estimated from green to blue
                     cv2.circle(traj_img, (true_x, true_y), 1,(0, 0, 255), 1)  # groundtruth in red
                     # write text on traj_img
+#                     cv2.rectangle(traj_img, (10, 20), (600, 60), (0, 0, 0), -1)
+#                     text2 = "Advisor: Dr. Chuang-Jan Chang"
+#                     text3 = "Writter: Heru Syah Putra"
+#                     text = "Coordinates: x=%2fm y=%2fm z=%2fm" % (x, y, z)
+#                     cv2.putText(traj_img, text2, (10, 20), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 1, 8)
+#                     cv2.putText(traj_img, text3, (10, 40), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 1, 8)
+#                     cv2.putText(traj_img, text, (10, 60), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 1, 8)
+                    
                     cv2.rectangle(traj_img, (10, 20), (600, 60), (0, 0, 0), -1)
                     text = "Coordinates: x=%2fm y=%2fm z=%2fm" % (x, y, z)
                     cv2.putText(traj_img, text, (20, 40), cv2.FONT_HERSHEY_PLAIN, 1, (255, 255, 255), 1, 8)
