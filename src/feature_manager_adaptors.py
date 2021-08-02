@@ -77,14 +77,13 @@ class BlockAdaptor(object):
                     executor.map(detect_block, block_generator) # automatic join() at the end of the `width` block                 
             return np.array(kps_all)
         
-        
     def detectAndCompute(self, frame, mask=None):
         if self.row_divs == 1 and self.col_divs == 1: 
             return self.detector.detectAndCompute(frame, mask)
         else:   
             if kVerbose:             
                 print('BlockAdaptor ', self.row_divs, 'x', self.col_divs)
-            block_generator = img_mask_blocks(frame, mask, self.row_divs, self.col_divs)
+            block_generator = img_mask_blocks(frame, mask, self.row_divs, self.col_divs) # mask (return an object of same shape as self)
             kps_all = []
             des_all = []
             kps_des_map = {} # (i,j) -> (kps,des)  
@@ -160,11 +159,9 @@ class PyramidAdaptor(object):
                                first_level=first_level,
                                pyramid_type=pyramid_type)
         self.initSigmaLevels()
-        
         self.block_adaptor = None 
         if self.use_block_adaptor:
             self.block_adaptor = BlockAdaptor(self.detector, self.descriptor, row_divs = kAdaptorNumRowDivs, col_divs = kAdaptorNumColDivs, do_parallel=False)            
-
 
     def initSigmaLevels(self): 
         num_levels = max(kNumLevelsInitSigma, self.num_levels)
@@ -190,7 +187,6 @@ class PyramidAdaptor(object):
             self.scale_factors[i]=self.scale_factors[i-1]*self.scale_factor
             self.inv_scale_factors[i]=1.0/self.scale_factors[i]
         #print('self.inv_scale_factors: ', self.inv_scale_factors)     
-                 
                  
     # detect on 'unfiltered' pyramid images ('unfiltered' meanining depends on the selected pyramid type)             
     def detect(self, frame, mask=None):      
@@ -222,7 +218,7 @@ class PyramidAdaptor(object):
                 kps_all.extend(kps)
                 
             if not self.do_parallel:
-                #print('sequential computations')                   
+                # print('sequential computations')                   
                 # process the blocks sequentially 
                 for i in range(0,self.num_levels):              
                     scale = self.scale_factors[i]
@@ -239,8 +235,7 @@ class PyramidAdaptor(object):
                     wait(futures) # wait all the task are completed                  
                                     
             return np.array(kps_all)  
-        
-        
+              
     # detect on 'unfiltered' pyramid images ('unfiltered' meanining depends on the selected pyramid type)   
     # compute descriptors on 'filtered' pyramid images ('filtered' meanining depends on the selected pyramid type)                 
     def detectAndCompute(self, frame, mask=None):      
@@ -306,5 +301,4 @@ class PyramidAdaptor(object):
                     else:                  
                         des_all = des                                                                                
             return np.array(kps_all), np.array(des_all)          
-                     
-
+                  
