@@ -21,7 +21,7 @@ class Camera:
         self.D = np.array(D,dtype=np.float32) # np.array([k1, k2, p1, p2, k3])  distortion coefficients 
         self.fps = fps 
         
-        self.is_distorted = np.linalg.norm(self.D) > 1e-10
+        self.is_distorted = np.linalg.norm(self.D) > 1e-10 # scientific notation (decimal) | used to compute the eigenvalues and right eigenvectors of a square array.
         self.initialized = False     
         
         
@@ -78,14 +78,16 @@ class PinholeCamera(Camera):
         
     # update image bounds     
     def undistort_image_bounds(self):
+        # used variables to reshape 4x2
         uv_bounds = np.array([[self.u_min, self.v_min],
                                 [self.u_min, self.v_max],
                                 [self.u_max, self.v_min],
-                                [self.u_max, self.v_max]], dtype=np.float32).reshape(4,2)
+                                [self.u_max, self.v_max]], dtype=np.float32).reshape(4,2) 
         #print('uv_bounds: ', uv_bounds)
         if self.is_distorted:
                 uv_bounds_undistorted = cv2.undistortPoints(np.expand_dims(uv_bounds, axis=1), self.K, self.D, None, self.K)      
                 uv_bounds_undistorted = uv_bounds_undistorted.ravel().reshape(uv_bounds_undistorted.shape[0], 2)
+                # ravel function is returns contiguous flattened array
         else:
             uv_bounds_undistorted = uv_bounds 
         #print('uv_bounds_undistorted: ', uv_bounds_undistorted)                
