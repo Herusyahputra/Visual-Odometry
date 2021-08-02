@@ -9,7 +9,7 @@ import numpy as np
 from enum import Enum
 import cv2
 import os
-import glob
+import glob # used to retrieve files/pathnames matching a specified pattern.
 import time 
 from multiprocessing import Process, Queue, Value 
 from utils_sys import Printer 
@@ -22,7 +22,6 @@ class DatasetType(Enum):
     VIDEO = 4
     FOLDER = 5  # generic folder of pics 
     LIVE = 6
-
 
 def dataset_factory(settings):
     type=DatasetType.NONE
@@ -58,7 +57,6 @@ def dataset_factory(settings):
         dataset = LiveDataset(path, name, associations, DatasetType.LIVE)   
                 
     return dataset 
-
 
 class Dataset(object):
     def __init__(self, path, name, fps=None, associations=None, type=DatasetType.NONE):
@@ -141,8 +139,6 @@ class VideoDataset(Dataset):
             print('ERROR while reading from file: ', self.filename)
         return image       
 
-
-
 class LiveDataset(Dataset): 
     def __init__(self, path, name, associations=None, type=DatasetType.VIDEO): 
         super().__init__(path, name, None, associations, type)    
@@ -163,8 +159,6 @@ class LiveDataset(Dataset):
         if ret is False:
             print('ERROR in reading from camera: ', self.camera_num)
         return image           
-
-
 
 class FolderDataset(Dataset): 
     def __init__(self, path, name, fps=None, associations=None, type=DatasetType.VIDEO): 
@@ -229,12 +223,9 @@ class FolderDatasetParallel(Dataset):
           raise IOError('No images were found in folder: ', path)     
 
         self.is_running = Value('i',1)  
-        
         self.folder_status = FolderDatasetParallelStatus(i,maxlen,listing,skip)
-
         self.q = Queue(maxsize=10)    
         self.q.put(self.folder_status)   # pass the folder status with the initialization  
-        
         self.vp = Process(target=self._update_image, args=(self.q,))
         self.vp.daemon = True                 
             
@@ -276,14 +267,11 @@ class FolderDatasetParallel(Dataset):
             img = self.q.get()         
         return img    
 
-
-
 class Webcam(object):
     def __init__(self, camera_num=0):
         self.cap = cv2.VideoCapture(camera_num)
         self.current_frame = None 
         self.ret = None 
-        
         self.is_running = Value('i',1)        
         self.q = Queue(maxsize=2)        
         self.vp = Process(target=self._update_frame, args=(self.q,self.is_running,))
@@ -316,8 +304,6 @@ class Webcam(object):
         while not self.q.empty():  # get last available image
             img = self.q.get()         
         return img
-
-
 
 class KittiDataset(Dataset):
     def __init__(self, path, name, associations=None, type=DatasetType.KITTI): 
@@ -365,7 +351,6 @@ class KittiDataset(Dataset):
                 self._next_timestamp = self.timestamps                  
         self.is_ok = (img is not None)        
         return img 
-
 
 class TumDataset(Dataset):
     def __init__(self, path, name, associations, type=DatasetType.TUM): 
